@@ -44,7 +44,7 @@ console.log(child.info,child2.info) //{age: 17, hobby: "跑步"} {age: 17, hobby
 > 原型链继承的弊端：
 >
 > + 所有的Child的实例原型都会指向同一个父类实例，对某个子类实例引用类型变量的修改会影响所有的子类实例
-> + 创建子类实例时，无法向父类构造函数擦传参
+> + 创建子类实例时，无法向父类构造函数传参
 >
 
 #### 构造函数继承
@@ -122,6 +122,37 @@ let child = new Child()
 let parent = new Parent()
 console.log(child.getName()) //'zhangsan'
 console.log(parent.getName()) // undefined
+
+```
+
+以上方法有一个封装写法
+
+```js
+function object(o){
+    function F(){}
+    F.prototype = o
+    return new F()
+}
+function prototype(child,parent){
+    var prototype = object (parent.prototype)
+    prototype.constructor = child
+    child.prototype = prototype
+}
+//prototype(Child,Parent)
+
+
+function Foo (){
+    this.name = 'foo'
+}
+Foo.prototype.getName = function (){
+    return this.name
+}
+function FooChild(){
+}
+prototype(FooChild,Foo)
+let child = new FooChild()
+console.log(child.getName())
+//还是第一种简单
 
 ```
 

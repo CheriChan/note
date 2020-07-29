@@ -104,6 +104,7 @@ Function.prototype.myCall = function(thisArg, ...args) {
 }
 let info = obj2.getInfo.myCall(obj3,'湖南')
 console.log(info) //小王今年88岁，出生在湖南
+//手写call的理念在于this的转换，将执行上下文的this指向调用call的函数，将调用call的函数转为传入的this的属性之一
 ```
 
 ## apply
@@ -118,17 +119,15 @@ function.apply(obj,[arr])
 let obj = {
   text:"天王盖地虎"
 }
-fuction foo(){
+function foo(){
   console.log(this.text)
 }
-obj.foo = foo
-
 
 Function.prototype.myApply= function(objArgs,arr){
   const fn = Symbol('fn')
   objArgs = objArgs||window
   objArgs[fn]=this
-  let result = objArgs[fn](arr)
+  let result = objArgs[fn](...arr)
   delete objArgs[fn]
   return result
 }
