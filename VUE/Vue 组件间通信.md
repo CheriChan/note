@@ -184,8 +184,6 @@ $refs是非响应的，避免在模板或者计算属性中使用$refs，这是�
 
 EventBus是一个开源库，利用发布/订阅着模式来对项目进行解耦。利用少量的代码实现多组件通信
 
-
-
 用EventBus通信的优点
 
 + 简化了组件间交流的方式
@@ -356,5 +354,94 @@ EventBus.$off('decreased',{})
 
 **全局EventBus**
 
+```js
+var EventBus = new Vue()
+Object.defineProperties(vue.prototype,{
+    $bus:{
+        get:function(){
+            return EventBus
+        }
+    }
+})
+```
 
+创建发出事件，用$emit，订阅用$on
+
+```js
+var EventBus = new Vue()
+this.$bus.$emit('nameOfEvent',{...pass some event data ...})
+this.$bus.$on('nameOfEvent',($event)=>{})
+```
+
+```vue
+<template>
+<div class="form">
+    <div class= "form-control">
+        <input v-model = "message">
+        <button @click =" updateMessage()">
+            更新信息
+    </button>
+    </div>
+    </div>
+</template>
+<script>
+export default{
+    name:"updateMessage",
+    data(){
+        return {
+            message:"这是一条信息"
+        }
+    },
+    methods:{
+        updateMessage(){
+            this.$bus.$emit("updateMessage",this.message)
+        }
+    },
+    beforeDestroy(){
+        $this.$bus.$off('updateMessage')
+    }
+}
+</script>
+```
+
+```vue
+<template>
+<div class="message">
+    <h1>
+        {{message}}
+    </h1>
+    </div>
+</template>
+<script>
+    export default{
+        name:"showMessage",
+        date(){
+            return {
+                message:"我是一条消息"
+            }
+        },
+        created:{
+            var self =this
+            this.$bus.$on('updateMessage',function(value){
+        self.updateMessage(value)
+    })
+        }
+        methods:{
+            updateMessage(value){
+                this.message = value
+            }
+        }
+    }
+</script>
+```
+
+## ④provide/inject 适用于隔代组件通信
+
+祖先组件中通过provide来提供变量，子孙组件中通过inject来注入变量。组要解决了**跨级**组件间的通信问题。
+
+provide：一个对象，或返回一个对象的函数
+
+inject：一个字符串数组，或一个对象
+
+## ⑤**Vuex 适用于 父子、隔代、兄弟组件通信**
 

@@ -33,7 +33,7 @@ console.log(window.history) // History {length:1,scrollRestoration:"auto",state:
 
 ------
 
-而使用ajax惊醒局部数据更新时，浏览器地址栏的url链接没有改变，所以浏览器不会保存这个记录。这个时候点击返回按钮就会出现非期待性的结果。再SPA中这种问题非常常见
+而使用ajax进行局部数据更新时，浏览器地址栏的url链接没有改变，所以浏览器不会保存这个记录。这个时候点击返回按钮就会出现非期待性的结果。再SPA中这种问题非常常见
 
 
 
