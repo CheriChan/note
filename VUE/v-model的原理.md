@@ -11,13 +11,17 @@
 <template>
 	<div id= "app">
         <Children v-model = "number"></Children>
+        <!--
+可以写成
+<Children :value = "number" @input = "number = arguments[0]"></Children>
+-->
         <div>
             {{number}}
         </div>
     </div>
 </template>
 <script>
-import Children from '.children.vue'
+import Children from 'children.vue'
     export default{
         data(){
             return {

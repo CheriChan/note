@@ -18,7 +18,7 @@
 
 #### SPA应用实现前进后退功能所遇到的问题
 
-浏览器会记录地址栏的url的资源链接，如果url链接发生变化，浏览器回吧该url链接保存到一个特殊的数据结构中，用户点击返回与前进按钮时，会快速访问已经被记录的url链接资源
+浏览器会记录地址栏的url的资源链接，如果url链接发生变化，浏览器会把该url链接保存到一个特殊的数据结构中，用户点击返回与前进按钮时，会快速访问已经被记录的url链接资源
 
 ```javascript
 console.log(window.history) // History {length:1,scrollRestoration:"auto",state:null}
@@ -29,13 +29,24 @@ console.log(window.history) // History {length:1,scrollRestoration:"auto",state:
 
 一般会用到forward/back/go
 
-浏览器有两个实用的接口**pushState** 和 **replaceState**   （详细内容减浏览器History）
+浏览器有两个实用的接口**pushState** 和 **replaceState**   （详细内容见浏览器History）
 
 ------
 
 而使用ajax进行局部数据更新时，浏览器地址栏的url链接没有改变，所以浏览器不会保存这个记录。这个时候点击返回按钮就会出现非期待性的结果。再SPA中这种问题非常常见
 
+因为hash模式，导致浏览器前进后退失效的时候，可以使用路由的history模式，或者在APP.vue文件中监听hashchange事件
 
+```javascript
+mounted(){
+window.addEventListener('hashchange',()=>{
+    let currentPath = window.location.hash.splice(1)
+    if(this.$route.path !== currentPath){
+        this.$router.push(currentPath)
+    }
+})
+}
+```
 
 
 
