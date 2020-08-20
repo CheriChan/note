@@ -4,6 +4,10 @@
 
 [toc]
 
+当JavaScript代码执行一段可执行代码(executable code)时，会创建对应的执行上下文(execution context)
+
+
+
 ## 关于函数申明，和函数表达式，及变量声明的坑
 
 只有函数声明（function declaration）会被加入到变量对象中，而函数表达式（function expression）会被忽略。

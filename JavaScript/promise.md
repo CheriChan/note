@@ -301,16 +301,13 @@ class MyPromise {
 
   关于promise 的面试题
 
-  
-
   ```js
-  const promise1 = new Promise((res,rej)=>{
+const promise1 = new Promise((res,rej)=>{
       console.log(111)
   })
   console.log(promise1)
   // 111 Promise{(pending)}
   ```
-
   
 
 ```js
