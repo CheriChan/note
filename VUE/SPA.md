@@ -44,7 +44,7 @@ window.addEventListener('hashchange',()=>{
     if(this.$route.path !== currentPath){
         this.$router.push(currentPath)
     }
-})
+ })
 }
 ```
 
