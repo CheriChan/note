@@ -37,7 +37,7 @@ class MyPromise(){
 
 ### 临时总结Promise A+规范
 
-promise本质是一个状态机，且状态只能为Pending(等待状态)，Fulfilled（执行状态），Reject（拒绝状态），状态的变更时单向且不可逆的，只能从Pending->Fulfilled或Pending->Rejected
+promise本质是一个状态机，且状态只能为Pending(等待状态)，Fulfilled（执行状态），Reject（拒绝状态），状态的变更是单向且不可逆的，只能从Pending->Fulfilled或Pending->Rejected
 
 then 方法接收两个参数，分别对应状态变更时触发的回调。then方法返回一个promise，then方法可以被同一个promise调用很多次
 
@@ -299,8 +299,62 @@ class MyPromise {
   
   ```
 
-  关于promise 的面试题
+  ### 最简实现promise
 
+<<<<<<< HEAD
+=======
+  ```js
+function MyPromise(fn){
+      this.cbs = []
+      const resolve = (value)=>{
+          setTimeout(()=>{
+              this.data = value
+              this.cbs.forEach((cb)=>{
+                  cb(value)
+              })
+        })
+      }
+      fn(resolve)
+  }
+  MyPromise.prototype.then = function (onResolved){
+      return new MyPromise((resolve)=>{
+          this.cbs.push(()=>{
+              const res = onResolved(this.data)
+              if(res instanceof MyPromise){
+                  res.then(resolve)
+              }else{
+                  resolve(res)
+              }
+          })
+      })
+  }
+  let p1 = new MyPromise((res)=>{
+      setTimeout(()=>{
+          res(1)
+      })
+  })
+  console.log(p1)// MyPromise {cbs: [] ,data: 1}
+  let p2 = p1.then((res)=>{
+      console.log(res)
+      return res
+  })  // 1
+  console.log(p2) //MyPromise {cbs:[],data:""}  
+  
+  //创建实例，实例里面会声明回调函数的集合，以及resolve函数，同时执行入参的用户自定义函数；调用then方法，里面同样返回一个promise对象，对象函数参数执行了向回调函数集合push内容，在这个push里面，会调用resolve函数
+  //先将then方法放到队列里面，然后resolve的时候执行队列里的方法
+  //then是在做准备工作，将队列排好，resolve就是开始执行的指令
+  
+  
+  
+  ```
+  
+  
+  
+  ### 关于promise 的面试题
+  
+  
+  
+>>>>>>> 21686ecbfb62d0b9dc26959ed157f318bf7c8393
   ```js
 const promise1 = new Promise((res,rej)=>{
       console.log(111)
@@ -308,6 +362,10 @@ const promise1 = new Promise((res,rej)=>{
   console.log(promise1)
   // 111 Promise{(pending)}
   ```
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 21686ecbfb62d0b9dc26959ed157f318bf7c8393
   
 
 ```js
