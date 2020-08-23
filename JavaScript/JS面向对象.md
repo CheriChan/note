@@ -2,9 +2,7 @@
 
 #### es5面向对象
 
-![img](https://user-gold-cdn.xitu.io/2020/4/6/1714fd86c8983189?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
-[图片来源]: https://juejin.im/post/5e8b261ae51d4546c0382ab4#heading-18
+![jsmxdx](/Users/cheri/Documents/NOTE/note/source/images/jsmxdx.png)
 
 ##### 原型链继承
 

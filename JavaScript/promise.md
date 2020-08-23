@@ -4,8 +4,6 @@
 
 手写Promise对象
 
-
-
 ```js
 class MyPromise(){
     constructor(executor){
@@ -347,13 +345,13 @@ function MyPromise(fn){
   
   
   ```
+
   
-  
-  
+
   ### 关于promise 的面试题
+
   
-  
-  
+
 >>>>>>> 21686ecbfb62d0b9dc26959ed157f318bf7c8393
   ```js
 const promise1 = new Promise((res,rej)=>{
@@ -364,9 +362,9 @@ const promise1 = new Promise((res,rej)=>{
   ```
 <<<<<<< HEAD
 =======
-  
+
 >>>>>>> 21686ecbfb62d0b9dc26959ed157f318bf7c8393
-  
+
 
 ```js
 const promise = new Promise((res,rej)=>{
