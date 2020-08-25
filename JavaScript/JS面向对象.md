@@ -1,10 +1,16 @@
 # 面向对象
 
-#### es5面向对象
+[TOC]
 
-![jsmxdx](/Users/cheri/Documents/NOTE/note/source/images/jsmxdx.png)
 
-##### 原型链继承
+
+## es5面向对象
+
+![](D:\note\source\images\jsmxdx.png)
+
+
+
+## 原型链继承
 
 ```js
 //这是一个构造函数
@@ -45,7 +51,7 @@ console.log(child.info,child2.info) //{age: 17, hobby: "跑步"} {age: 17, hobby
 > + 创建子类实例时，无法向父类构造函数传参
 >
 
-#### 构造函数继承
+## 构造函数继承
 
 ```js
 function Parent(name){
@@ -78,7 +84,7 @@ console.log(parent.info)  //{age: 18, hobby: "跑步"}
 
 > 构造函数继承的缺点：继承不到父类原型上的属性和方法
 
-#### 组合式继承
+## 组合式继承
 
 ```js
 function Parent(name){
@@ -100,9 +106,9 @@ console.log(child1.getName())  //'zhangsan'
 //child的属性里面会有一个name:"zhangsan" ，属性_proto_下面还会有一个通过原型链继承的name：undefined 
 ```
 
-> 组合式继承，每次 创建Child的实例的时候，都会执行Parent.call和new Parent()，此时原型总会存在两份相同的属性和方法
+> 组合式继承，每次创建Child的实例的时候，都会执行Parent.call和new Parent()，此时原型总会存在两份相同的属性和方法
 
-#### 寄生式组合继承
+## 寄生式组合继承
 
 ```js
 function Parent(name){
@@ -156,7 +162,7 @@ console.log(child.getName())
 
 
 
-### ES6面向对象
+## ES6面向对象
 
 创建一个对象
 
