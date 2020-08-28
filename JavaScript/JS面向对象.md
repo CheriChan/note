@@ -94,9 +94,9 @@ Parent.prototype.getName = function (){
     return this.name 
 }
 function Child (){
-    Parent.call(this,'zhangsan')
+    Parent.call(this,'zhangsan') // 调用一次构造函数，创建了属性
 }
-Child.prototype = new Parent()
+Child.prototype = new Parent() // 这个时候会将父类的构造函数上的属性以及原型上的属性及方法全部放到子类实例的原型里，重复了构造函数里面的属性
 Child.prototype.constructor = Child
 
 let child1 = new Child()
