@@ -1,4 +1,19 @@
+[TOC]
+
+
+
 # this
+
+## this是什么
+
+> this就是代码执行时当前的context object。
+
+**代码没有再任何函数中执行，而是在全局作用域中执行时，this的值时global对象，对于浏览器来说，this就是window**
+
+**而函数中的this值取决于这个函数时怎样被调用的**
+
++ 当函数作为对象的方法被调用时，它的this值就是该对象
++ 
 
 > this永远指向最后调用它的那个对象
 
@@ -29,14 +44,11 @@ foo() // windowName Cherry
 
 ```js
   var name = "windowsName";
-
     var a = {
         name : "Cherry",
-
         func1: function () {
             console.log(this.name)     
         },
-
         func2: function () {
             setTimeout( () => {
                 this.func1()
