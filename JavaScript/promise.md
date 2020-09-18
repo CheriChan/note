@@ -299,8 +299,6 @@ class MyPromise {
 
   ### 最简实现promise
 
-<<<<<<< HEAD
-=======
   ```js
 function MyPromise(fn){
       this.cbs = []
@@ -350,20 +348,13 @@ function MyPromise(fn){
 
   ### 关于promise 的面试题
 
-  
-
->>>>>>> 21686ecbfb62d0b9dc26959ed157f318bf7c8393
-  ```js
+```js
 const promise1 = new Promise((res,rej)=>{
-      console.log(111)
-  })
-  console.log(promise1)
-  // 111 Promise{(pending)}
-  ```
-<<<<<<< HEAD
-=======
-
->>>>>>> 21686ecbfb62d0b9dc26959ed157f318bf7c8393
+console.log(111)
+})
+console.log(promise1)
+// 111 Promise{(pending)}
+```
 
 
 ```js
