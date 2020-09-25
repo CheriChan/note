@@ -120,9 +120,33 @@ async function test(){
 test() //打印结果something hello async
 ```
 
+<<<<<<< HEAD
 await 是个运算符，用于组成表达式，await表达式的运算结果取决于它等的东西。
 
 如果它等的不是promise对象，那么await表达式的运算结果就是它等到值
 
 如果它等的是一个promise对象，它就会阻塞后面的代码，等着Promise执行resolve，然后得到resolve的值，作为await表达式的运算结果，promise执行的结果可能是rejected
+=======
+**await 是个运算符，用于组成表达式，await表达式的运算结果取决于它等的东西。**
+
+**如果它等的不是promise对象，那么await表达式的运算结果就是它等到的值**
+
+**如果它等的是一个promise对象，它就会阻塞后面的代码，等着Promise执行resolve，然后得到resolve的值，作为await表达式的运算结果，promise执行的结果可能是rejected，所以最好把await命令放在try...catch代码块中**
+
+```js
+async function myFunction(){
+    try{
+        await somethingThatReturnsAPromise()
+    }catch(err){
+        console.log(err)
+    }
+}
+//另一种写法
+async function myFunction(){
+    await somethingThatReturnsAPromise().catch((err)=>{
+        console.log(err)
+    })
+}
+```
+>>>>>>> async/await
 
